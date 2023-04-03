@@ -19,6 +19,7 @@ API_KEY = os.environ['API_KEY']
 app = Dash(__name__,
            suppress_callback_exceptions=True,
            external_stylesheets=[dbc.themes.MORPH])  # QUARTZ
+server = app.server
 app.title = "🌤 Weather"
 load_figure_template('MORPH')
 
