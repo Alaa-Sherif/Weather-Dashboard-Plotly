@@ -80,7 +80,6 @@ tab2_content = html.Div([
   ]),
   dbc.Row(dbc.Col(id='temp_compare_graph')),
   dbc.Row([
-    #dbc.Col(id='wind_compare_graph'),
     dbc.Col(id='humidity_compare_graph')
   ]),
   dbc.Row([
@@ -660,20 +659,7 @@ def update_compare_graphs(city_1, city_2):
                ticktext=df_compare["date"].dt.strftime('%m-%d')[::8],
                tickangle=40))
   fig_2.update_traces(stackgroup=None, fill='tozeroy')
-  # wind graph
-  fig_3 = px.area(df_compare,
-                  'date',
-                  y=[df_compare.columns[3], df_compare.columns[4]],
-                  labels={'value': 'Wind speed (Kp/h)'},
-                  color_discrete_sequence=[color1, color2],
-                  line_shape='spline')
-  fig_3.update_layout(
-    xaxis=dict(tickmode="array",
-               tickvals=df_compare["date"][::8],
-               ticktext=df_compare["date"].dt.strftime('%m-%d')[::8],
-               tickangle=40))
-  fig_3.update_traces(stackgroup=None, fill='tozeroy')
-
+  
   # humidity graph
   fig_4 = px.area(df_compare,
                   'date',
@@ -736,7 +722,6 @@ def update_compare_graphs(city_1, city_2):
 
   graph2 = create_graph_card(
     dcc.Graph(figure=fig_2))  # , className='scorecard__graph'
-  #graph3 = create_graph_card(dcc.Graph(figure=fig_3))
   graph4 = create_graph_card(dcc.Graph(figure=fig_4))
 
   graph8 = create_graph_card(dcc.Graph(figure=fig_8))
