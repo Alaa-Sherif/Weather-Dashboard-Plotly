@@ -5,4 +5,10 @@ dash_bootstrap_components==1.4.1
 dash_bootstrap_templates==1.0.8
 dash_daq==0.5.0
 numpy
-replit==3.2.5
+plotly.graph_objs
+pytz
+urllib3
+os
+json
+datetime
+plotly.express
