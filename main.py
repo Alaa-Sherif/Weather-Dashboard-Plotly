@@ -14,7 +14,7 @@ import pytz
 import plotly.graph_objs as go
 import numpy as np
 
-API_KEY = os.environ['API_KEY']
+API_KEY = os.environ['7f1e374640ac4e66930170929232403']
 
 app = Dash(__name__,
            suppress_callback_exceptions=True,
