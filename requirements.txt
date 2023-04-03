@@ -1,3 +1,8 @@
 dash==2.9.2
 pandas
 gunicorn
+dash_bootstrap_components
+dash_bootstrap_templates
+dash.dependencies
+dash_daq
+numpy
