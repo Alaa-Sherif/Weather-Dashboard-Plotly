@@ -4,11 +4,5 @@ gunicorn
 dash_bootstrap_components==1.4.1
 dash_bootstrap_templates==1.0.8
 dash_daq==0.5.0
-numpy==1.24.2
-plotly.graph_objs
-pytz
-urllib3==1.26.15
-os
-json
-datetime
-plotly.express
+numpy==1.21.6
+
