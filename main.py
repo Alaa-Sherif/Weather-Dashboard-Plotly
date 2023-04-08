@@ -236,7 +236,8 @@ def update_graphs(value, city):
   # country = data['country']
   # region = data['region']
 
-  url = f'http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={city}&days={8}&aqi=no&alerts=no'
+  url = f'http://api.weatherapi.com/v1/forecast.json?key={API_KEY}&q={city}&days=8&aqi=no&alerts=no'
+
   response = http.request('GET', url)
   current_data_day = json.loads(response.data.decode('utf-8'))
 
@@ -315,16 +316,21 @@ def update_graphs(value, city):
   conds = []
   icons = []
   avg_temp = []
+
   for i in range(7):
-    d = current_data_day['forecast']['forecastday'][i]['date']
-    d = pd.Timestamp(d)
-    days.append(d.day_name())
-    avg_temp.append(
-      current_data_day['forecast']['forecastday'][i]['day']['avgtemp_c'])
-    icons.append(current_data_day['forecast']['forecastday'][i]['day']
-                 ['condition']['icon'])
-    conds.append(current_data_day['forecast']['forecastday'][i]['day']
-                 ['condition']['text'])
+    print(i)
+    try:
+      d = current_data_day['forecast']['forecastday'][i]['date']
+      d = pd.Timestamp(d)
+      days.append(d.day_name())
+      avg_temp.append(
+        current_data_day['forecast']['forecastday'][i]['day']['avgtemp_c'])
+      icons.append(current_data_day['forecast']['forecastday'][i]['day']
+                   ['condition']['icon'])
+      conds.append(current_data_day['forecast']['forecastday'][i]['day']
+                   ['condition']['text'])
+    except Exception as e:
+      print(f"Error processing data for index {i}: {e}")
 
   # sunset & sunrise for today
   sunrise = current_data_day['forecast']['forecastday'][0]['astro']['sunrise']
